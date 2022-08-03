@@ -1,0 +1,6 @@
+
+npm init
+
+install: ejs, express, mongoose
+
+

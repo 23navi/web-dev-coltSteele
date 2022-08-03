@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+    <% for(let i=0;i<fakeCommentArray.length;i++){ %>
+        <li>
+            <%= fakeCommentArray[i].name%> - <%= fakeCommentArray[i].comment%>
+        </li>
+        
+    <%}%>
+    </ul>
+    <button onclick="location.href='comments/new'" type="button">
+        Create new comment</button>
+    
+</body>
+</html>
