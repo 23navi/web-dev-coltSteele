@@ -3,29 +3,41 @@ const { default: mongoose } = require("mongoose");
 require("../mongoose");
 
 
-const userSchema = new mongoose.Schema({
+
+const productSchema= mongoose.Schema({
     name:String,
-    address:[
-        {
-            // _id:{id:false},   //if we don't want id for nested objects
-            street:String,
-            city:String,
-            state:String,
-        }]
-    
+    price:Number,
+
 })
 
-const User=mongoose.model("User",userSchema);  // in mongo db the model will be users... and can create new user by new User
+const shopSchema= new mongoose.Schema({
+    name:String,
+    location:String,
+    products:[{type: mongoose.Schema.Types.ObjectId, ref:"Product"}]
+})
 
+const Product= mongoose.model("Product",productSchema);
+const Shop= mongoose.model("Shop",shopSchema);
 
-const makeUser=async()=>{
-    const user1=new User({
-        name:"Navi"
+// const prod1=new Product({
+//     name:"Lichi",
+//     price:50
+// })
+// prod1.save()
+
+const makeFarm=async()=>{
+    const prod=await Product.find({name:"Apple"})
+
+    const shop1= new Shop({
+        name:"Navi Shop",
+        location:"Surat"
     })
-    user1.address.push({street:"Vip road",city:"Surat",state:"Gujarat"})
-    const res=await user1.save();
-    console.log(res);
+
+    shop1.products.push(prod[0].id)
+    // shop1.save()
+    console.log(shop1);
+    
 
 }
 
-makeUser();
+makeFarm()
