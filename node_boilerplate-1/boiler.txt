@@ -1,0 +1,55 @@
+This is the boilerplate for nodejs project
+with express, ejs and ejs mate as templating engine
+support for socket.io 
+code divided into app.js and index.js
+
+
+do npm init
+git init 
+
+MVC format -> model views control 
+
+config folder contains all the .env files
+
+
+
+package.json
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+
+
+  npm i express ejs ejs-mate mongoose nodemon method-override dotenv env-cmd
+
+
+
+
+  to use .env files -> we have two diff ways 
+  
+  1)npm i dotenv --save-dev
+
+  if(process.env.NODE_ENV!== "production"){
+    require('dotenv').config({ path: '/custom/path/to/.env' })
+  }
+
+  2) npm i env-cmd --save-dev
+
+    in test, dev , start -> we need to add "env-cmd -f ./config/dev.env nodemon index.js"
+
+
+
+
+
+
+
+  we follow test driven driven development, so we also use jest for testing our codes in test dir
+
+
+
+
+
+  for mails -> sendgrid
+  for files/images/videos -> cloudinary
